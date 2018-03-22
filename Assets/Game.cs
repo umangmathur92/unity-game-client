@@ -33,25 +33,15 @@ public class Game : MonoBehaviour
         //     ProcessSpeciesList
         // );
         Debug.Log("started...");
-        if (scene != "")
-        {
-            // Application.LoadLevel(scene);
-            Game.SwitchScene(scene);
-        }
-        else
-        {
-            Debug.Log("Missing Scene");
-        }
+        if (scene != null) Game.SwitchScene(scene);
+        else Debug.Log("Missing Scene");
     }
 
     // Update is called once per frame
     void Update()
     {
         networkManager.Update();
-        if (isFading != 0)
-        {
-            PerformTransition();
-        }
+        if (isFading != 0) PerformTransition();
     }
 
     void OnGUI()
@@ -65,17 +55,10 @@ public class Game : MonoBehaviour
     {
         if (scene != nextScene)
         {
-            if (nextScene == null)
-            {
-                Game.LoadScene(scene);
-            }
-            else
-            {
-                StartLeaveTransition();
-            }
+            if (nextScene == null) Game.LoadScene(scene);
+            else StartLeaveTransition();
 
             nextScene = scene;
-
             return true;
         }
         return false;
@@ -152,10 +135,7 @@ public class Game : MonoBehaviour
                 isFading = 0;
                 alphaFadeValue = 1;
 
-                if (nextScene != null)
-                {
-                    Game.LoadScene(nextScene);
-                }
+                if (nextScene != null) Game.LoadScene(nextScene);
             }
         }
     }

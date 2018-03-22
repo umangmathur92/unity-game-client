@@ -75,24 +75,12 @@ public class Login : MonoBehaviour
         }
 
         if (playerRank != -1) {
-            switch (playerRank) {
-            case 1:
-                GUI.Button (new Rect (Screen.width / 2 - 200, Screen.height / 2 - 100, 400, 150), "Congratulations, you're player number 1!!");
-                StartCoroutine (wait (true));
-                break;
-            case 2:
-                GUI.Button (new Rect (Screen.width / 2 - 200, Screen.height / 2 - 100, 400, 150), "Congratulations, you're player number 2!!");
-                StartCoroutine (wait (true));
-                break;
-            case 3:
-                GUI.Button (new Rect (Screen.width / 2 - 200, Screen.height / 2 - 100, 400, 150), "Congratulations, you're player number 3!!");
-                StartCoroutine (wait (true));
-                break;
-            default:
-                StartCoroutine (wait (false));
-                break;
-            }
-        }
+			if (playerRank >= 1 && playerRank <= 3) {
+				GUI.Button (new Rect (Screen.width / 2 - 200, Screen.height / 2 - 100, 400, 150), "Congratulations, you're player number " + playerRank + "!!");
+				StartCoroutine (wait (true));
+			}
+			else StartCoroutine (wait (false));
+		}
     }
 
     void MakeWindow (int id)
