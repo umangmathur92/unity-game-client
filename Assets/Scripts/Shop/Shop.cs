@@ -14,8 +14,9 @@ public class Shop : MonoBehaviour {
   public SpeciesData selectedSpecies { get; set; }
   
   // Window Properties
-  private float width = 120;
-  private float height = 135;
+  private float width = 217;
+  private float height = 64; //135
+
   // Other
   private Rect windowRect;
   private Rect avatarRect;
@@ -79,14 +80,17 @@ public class Shop : MonoBehaviour {
   
   void OnGUI() {
     if (!isHidden) {
-      windowRect = new Rect(25, Screen.height - height - 10f, width, height);
+      windowRect = new Rect(0, 0, width, height);
+			// for y: last was -10, 25
+
+			// for y: "Screen.height - height - 10f"
       windowRect = GUI.Window(Constants.SHOP_WIN, windowRect, ShopMakeWindow, "Shop");
     }
     
   }
   
   void ShopMakeWindow(int id) {
-    if (GUI.Button(new Rect(20, 35, 80, 30), "Purchase")) {
+    if (GUI.Button(new Rect(10, 25, 90, 30), "Purchase")) {
 	  // GameObject.Find("Cube").GetComponent<Graph>().Hide();
       GameObject.Find("Cube").GetComponent<ShopPanel>().Show();
       GameObject.Find("Cube").GetComponent<ShopCartPanel>().Show();
@@ -98,7 +102,7 @@ public class Shop : MonoBehaviour {
       Hide();
     }
 	
-	if (GUI.Button(new Rect(20, 85, 80, 30), "Owned")) {
+	if (GUI.Button(new Rect(115, 25, 90, 30), "Owned")) {
   	  // GameObject.Find("Cube").GetComponent<Graph>().Hide();
 	  Debug.Log ("Clicked owned button");
 	  GameObject.Find("MenuScript").GetComponent<MenuScript>().menuOpen = true;

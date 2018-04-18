@@ -105,6 +105,7 @@ public class Login : MonoBehaviour
         style.fontSize = 16;
 		
         GUI.Label (new Rect ((windowRect.width - 100) / 2, 0, 100, 30), "Login", style);
+	//	GUI.Label (new Rect ((windowRect.width - 200) / 2, 0, 100, 30), "[Forgot User ID or Password?]", style);
 		
         GUI.BeginGroup (new Rect (10, 25, 300, 100));
         {
@@ -129,13 +130,19 @@ public class Login : MonoBehaviour
             isInitial = false;
         }
 		
-        if (GUI.Button (new Rect (width / 2 - 110, 145, 100, 30), "Log In")) {
-            Submit ();
+        if (GUI.Button (new Rect (width / 2 - 130, 145, 60, 30), "Log In")) {
+			//(GUI.Button (new Rect (width / 2 - 110, 145, 100, 30), "Log In")) 
+			Submit ();
         }
 		
-        if (GUI.Button (new Rect (width / 2 + 10, 145, 100, 30), "Register")) {
-            SwitchToRegister ();
+        if (GUI.Button (new Rect (width / 2 - 60, 145, 60, 30), "Register")) {
+			//(GUI.Button (new Rect (width / 2 + 10, 145, 100, 30), "Register"))
+			SwitchToRegister ();
         }
+
+		if (GUI.Button (new Rect (width / 2 + 10, 145, 120, 30), "Forgot Password?")) {
+		
+		}
     }
 
     public void Submit ()
