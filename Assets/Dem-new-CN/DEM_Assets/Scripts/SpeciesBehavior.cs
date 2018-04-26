@@ -58,25 +58,9 @@ public class SpeciesBehavior : MonoBehaviour
 		return this.alive;
 	}
 
-	public void Hurt(int damage) {
-		damage = health - damage;
-		setHealth(damage);
-	}
-
-	public void Heal(int healing) {
-		healing = health + healing;
-		setHealth(healing);
-	}
-
 	// makes sure that all new health values are within the max and min range for health
-	public void setHealth(int value){
-
-		if (value <= dead)
-			health = dead;
-		else if (value >= maxHealth)
-			health = maxHealth;
-		else
-			health = value;
+	public void setHealth(int health){
+		this.health = health;
 	}
 
 	public int getHealth() { 

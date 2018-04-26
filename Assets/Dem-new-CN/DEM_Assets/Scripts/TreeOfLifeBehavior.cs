@@ -4,18 +4,44 @@ using UnityEngine;
 
 // this needs to be made a component of the TreeOfLife object
 
-public class TreeOfLifeBehavior : SpeciesBehavior 
+public class TreeOfLifeBehavior : MonoBehaviour 
 {
 	private Material material;
 	public Material healthyTreeOfLife;
 	public Material injuredTreeOfLife;
 	public Material deadTreeOfLife;
 
+	// health status, max health = 5, min health = 0
+	protected bool alive;
+	private int treeHealth;
+
+	protected const int maxHealth = 5;
+	protected const int injured = 3;
+	protected const int dead = 0;
+
+	// the initial state
+	void Start() {
+		this.alive = true;
+		this.treeHealth = 5;
+	}
+
 	// Update is called once per frame
 	// Changes the look of the Tree of Life based on its health state.
 	void Update () {
 
-		int treeHealth = getHealth();
+	}
+
+	public void setAlive(bool alive) {
+		this.alive = alive;
+	}
+
+	public bool getAlive(){
+		return this.alive;
+	}
+
+	public virtual void ReactToHit() {
+
+		treeHealth--;
 
 		if (treeHealth <= dead) {
 			// Make the Tree of Life look dead.
@@ -35,12 +61,15 @@ public class TreeOfLifeBehavior : SpeciesBehavior
 	}
 
 
-	// Override, Tree of Life does not dies instantly.
-	// Instead, the tree of life reduces health untill dead state has been reached.
-	public override void ReactToHit() {
-		Hurt (1);
+	public virtual IEnumerator Die() {
+		// The object reacts to being hit by falling over,
+		this.transform.Rotate(-75, 0, 0);
+		// and then laying dead for 1.5 seconds, while the function yields control,
+		// so that the game keeps on playing.
+		yield return new WaitForSeconds(1.5f);
+		// After 1.5 seconds, the dead object is destroyed, so it leaves the game.
+		Destroy(this.gameObject);
 	}
-
 
 
 }

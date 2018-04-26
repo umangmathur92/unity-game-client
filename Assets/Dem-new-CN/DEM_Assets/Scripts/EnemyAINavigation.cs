@@ -22,10 +22,12 @@ public class EnemyAINavigation : MonoBehaviour {
 
 		// check if enemy has reached the tree of life
 		if (agent.remainingDistance <= agent.stoppingDistance) {
-			TreeOfLifeBehavior tree = GetComponent<TreeOfLifeBehavior> ();
+			
+			TreeOfLifeBehavior tree = GameObject.Find("TreeOfLife").GetComponent<TreeOfLifeBehavior> ();
 			if (tree != null) {
 				tree.ReactToHit ();
 			}
+
 			SpeciesBehavior behavior = GetComponent<SpeciesBehavior> ();
 			if (behavior != null) {
 				EnemyController.numberOfEnemies--;
