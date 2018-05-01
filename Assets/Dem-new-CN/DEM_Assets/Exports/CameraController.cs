@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
@@ -12,11 +12,11 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (GameManager.GameIsOver)
+		/*if (GameManager.GameIsOver)
 		{
 			this.enabled = false;
 			return;
-		}
+		}*/
 
 		if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
 		{
@@ -46,4 +46,3 @@ public class CameraController : MonoBehaviour {
 
 	}
 }
-*/
