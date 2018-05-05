@@ -49,7 +49,7 @@ namespace CW
 		// Use this for initialization
 		void Start ()
 		{
-			//StartCoroutine("AutoLogin");
+			StartCoroutine("AutoLogin");
 		}
 	
 		// Update is called once per frame
@@ -179,10 +179,10 @@ namespace CW
 		public IEnumerator AutoLogin ()
 		{
 			while (true) {
-				user_id = "1";
-				password = "1";
+				user_id = "kim21";
+				password = "password";
 				Submit ();
-			
+			//previous: 1 for both user_id & password
 				yield return new WaitForSeconds (1.0f);
 			}
 		}
