@@ -76,12 +76,12 @@ public class WorldController : MonoBehaviour {
 	  UpdateSpeciesLoc ();
 	}
 													//145
-	if (GUI.Button (new Rect (10, Screen.height - 180f, 80, 30), "Food Web") && !foodWebImageExists) {
+	if (GUI.Button (new Rect (10, Screen.height - 275f, 80, 30), "Food Web") && !foodWebImageExists) {
 	  short action = 2;
 	  Game.networkManager.Send (SpeciesActionProtocol.Prepare (action), ProcessSpeciesAction2);		
 	}
 													//45
-	if (GUI.Button (new Rect (200, Screen.height - 180f, 80, 30), "Logout")) {
+	if (GUI.Button (new Rect (200, Screen.height - 275f, 80, 30), "Logout")) {
 	  confirmPopUp = true;
 	}
 

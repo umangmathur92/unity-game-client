@@ -22,10 +22,15 @@ public class ChatPanel : MonoBehaviour {
         messages = scrollRect.Find("Messages").GetComponent<RectTransform>();
 
         // get the height from the parent, and then make the chatpanel the same height.
-       // RectTransform parentTransform = this.transform.parent.gameObject.GetComponent<RectTransform>();
-       // RectTransform transform = this.GetComponent<RectTransform>();
-       // transform.sizeDelta = new Vector2(transform.sizeDelta.x, parentTransform.sizeDelta.y);
-        txtMessage.ActivateInputField();
+        RectTransform parentTransform = this.transform.parent.gameObject.GetComponent<RectTransform>();
+        RectTransform transform = this.GetComponent<RectTransform>();
+        
+		transform.sizeDelta = new Vector2(transform.sizeDelta.x + 630, parentTransform.sizeDelta.y - 420);
+		transform.localPosition += new Vector3(1 * 1.50f, -1 * 420.0f , 0);
+		//transform.localPosition += Vector3.left * 300.0f;
+		//localPosition = Vector3.down * 20.0f;
+		//-1 * 300.0f, -1 * 20.0f, 0
+		txtMessage.ActivateInputField();
         btnSend.onClick.AddListener(sendChatMessage);
     }
 

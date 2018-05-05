@@ -38,8 +38,8 @@ public class EcosystemScore : MonoBehaviour {
 			score = GameState.envScore;
 			highScore = GameState.envHighScore;
 		}
-		// Environment Score label moved 
-        GUIExtended.Label (new Rect(350, 570, 200, 50), "Environment Score: " + score , scoreStyle, Color.black, Color.black);
+		// Environment Score label moved 570
+        GUIExtended.Label (new Rect(350, 475, 200, 50), "Environment Score: " + score , scoreStyle, Color.black, Color.black);
 
 
 		GUI.BeginGroup(new Rect(Screen.width / 2 - 200, 500, 300, 100));

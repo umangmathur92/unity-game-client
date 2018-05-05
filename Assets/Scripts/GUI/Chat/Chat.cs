@@ -105,6 +105,7 @@ public class Chat : MonoBehaviour {
 		style = new GUIStyle(GUI.skin.button);
 		style.alignment = TextAnchor.UpperCenter;
 
+
 		buttonRect = new Rect(320, innerRect.y + innerRect.height + 20, 60, 20);
 		if (GUI.Button(buttonRect, "Send", style)) {
 			SendMessage();
