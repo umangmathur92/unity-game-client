@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -68,4 +68,4 @@ public class WaveSpawner : MonoBehaviour {
 		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
 	}
 
-}*/
+}

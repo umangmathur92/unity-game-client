@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
@@ -38,11 +38,6 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	public void Slow (float pct)
-	{
-		speed = startSpeed * (1f - pct);
-	}
-
 	void Die ()
 	{
 		isDead = true;
@@ -58,4 +53,3 @@ public class Enemy : MonoBehaviour {
 	}
 
 }
-*/

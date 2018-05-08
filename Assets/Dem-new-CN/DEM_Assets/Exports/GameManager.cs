@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
 		if (GameIsOver)
 			return;
 
-		if (PlayerStats.Lives <= 0)
+		if (TreeOfLifeBehavior.treeHealth <= 0)
 		{
 			EndGame();
 		}
@@ -37,4 +37,3 @@ public class GameManager : MonoBehaviour {
 	}
 
 }
-*/

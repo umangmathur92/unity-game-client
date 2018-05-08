@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
 	}
 
 	// For every frame of the game scene
-	// Every so many seconds, spawn a new enemy, up to max number of enemies.
+	// Every so many seconds, spawn a new enemy.
 	void Update() 
 	{
 		if ((numberOfEnemies < DemSceneConstants.maxNumberOfEnemies) && ((Time.time - oldTime) > timeStep))

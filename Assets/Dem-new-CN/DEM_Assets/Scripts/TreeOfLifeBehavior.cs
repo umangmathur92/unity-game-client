@@ -13,7 +13,9 @@ public class TreeOfLifeBehavior : MonoBehaviour
 
 	// health status, max health = 5, min health = 0
 	protected bool alive;
-	private int treeHealth;
+
+	public int startHealth = 5;
+	public static int treeHealth;
 
 	protected const int maxHealth = 5;
 	protected const int injured = 3;
@@ -22,7 +24,7 @@ public class TreeOfLifeBehavior : MonoBehaviour
 	// the initial state
 	void Start() {
 		this.alive = true;
-		this.treeHealth = 5;
+		treeHealth = startHealth;
 	}
 
 	// Update is called once per frame
