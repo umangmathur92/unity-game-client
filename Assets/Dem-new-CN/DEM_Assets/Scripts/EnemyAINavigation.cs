@@ -20,7 +20,7 @@ public class EnemyAINavigation : MonoBehaviour {
 		
 	// to be done in every frame
 	void Update() {
-		
+		/***
 		// distance from enemy to the tree of life
 		distance = Vector3.Distance(agent.transform.position, locationTreeOfLife.position);
 
@@ -38,8 +38,23 @@ public class EnemyAINavigation : MonoBehaviour {
 				behavior.ReactToHit ();
 			}
 		}
-
+		***/
 	}
 
+
+	void onTriggerEnter(Collider other)
+	{
+		TreeOfLifeBehavior tree = other.gameObject.GetComponent<TreeOfLifeBehavior>();
+		//TreeOfLifeBehavior tree = GameObject.Find("TreeOfLife").GetComponent<TreeOfLifeBehavior> ();
+		EnemyBehavior enemy = GetComponent<EnemyBehavior> ();
+
+		//if (tree != null && behavior != null) 
+		if(tree != null)
+		{
+			//EnemyController.numberOfEnemies--;
+			tree.ReactToHit();
+			//enemy.ReactToHit();
+		}
+	}
 
 }

@@ -8,16 +8,14 @@ public class SpeciesFactory : MonoBehaviour
 	// Omnivore = 0, Carnivore = 1, Herbivore = 2, these are the constants used in the database.
 	// Added Plant = 3 and TreeOfLife = 4, for easier programming of collision and attack behaviors.
 	public enum SpeciesType {Omnivore, Carnivore, Herbivore, Plant, TreeOfLife};
+	public static int numAnimalTypes = 3;
 
 
 	public static SpeciesType getRandomAnimalType()
 	{
 		System.Array values = System.Enum.GetValues (typeof(SpeciesType));
-		// limit to animal types only
-		int max = values.Length - 2;
-		// Omnivore = 0, Carnivore = 1, Herbivore = 2
-		SpeciesType specie = (SpeciesType)(((int[])values)[Random.Range(0,max)]);
-		return specie;
+		SpeciesType animal = (SpeciesType)(((int[])values)[Random.Range(0,numAnimalTypes)]);
+		return animal;
 	}
 
 
@@ -61,4 +59,7 @@ public class SpeciesFactory : MonoBehaviour
 
 		return prey;
 	}
+
+
+
 }

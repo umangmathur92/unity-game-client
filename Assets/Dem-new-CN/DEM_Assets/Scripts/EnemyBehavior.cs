@@ -20,7 +20,7 @@ public class EnemyBehavior : SpeciesBehavior {
 
 	// to be done in every frame
 	void Update() {
-
+		/**
 		if (getAlive()) 
 		{
 			// creat a ray at the same position as the animal and facing in the same direction as the species
@@ -45,6 +45,7 @@ public class EnemyBehavior : SpeciesBehavior {
 				} // end if distance within obsticle range
 			}
 		} // end if alive
+		**/
 	} 
 
 

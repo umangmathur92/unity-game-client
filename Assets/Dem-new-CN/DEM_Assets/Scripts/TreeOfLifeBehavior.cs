@@ -41,6 +41,7 @@ public class TreeOfLifeBehavior : MonoBehaviour
 		return this.alive;
 	}
 
+
 	public virtual void ReactToHit() {
 
 		treeHealth--;
