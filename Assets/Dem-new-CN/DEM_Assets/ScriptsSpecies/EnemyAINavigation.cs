@@ -15,6 +15,7 @@ public class EnemyAINavigation : MonoBehaviour {
 	private GameObject treeOfLife;
 	private bool treeOfLifeHit;
 
+
 	// Use this for initialization
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
@@ -33,18 +34,18 @@ public class EnemyAINavigation : MonoBehaviour {
 		distance = Vector3.Distance(agent.transform.position, locationTreeOfLife.position);
 
 		// check if enemy has reached the tree of life
-		if (distance <= 3.0 && !treeOfLifeHit) 
+		if (distance <= 6.0 && !treeOfLifeHit) 
 		{
 			agent.isStopped = true;
-
-			if (behavior != null) {
-				EnemyController.numberOfEnemies--;
-				behavior.ReactToHit ();
-			}
 
 			if (treeOfLife != null) {
 				treeOfLifeHit = true;
 				treeOfLife.GetComponent<TreeOfLifeBehavior> ().reactToHit ();
+			}
+
+			if (behavior != null) {
+				EnemyController.numberOfEnemies--;
+				behavior.ReactToHit ();
 			}
 		}
 
