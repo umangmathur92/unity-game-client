@@ -8,13 +8,51 @@ public class SpeciesFactory : MonoBehaviour
 	// Omnivore = 0, Carnivore = 1, Herbivore = 2, these are the constants used in the database.
 	// Added Plant = 3 and TreeOfLife = 4, for easier programming of collision and attack behaviors.
 	public enum SpeciesType {Omnivore, Carnivore, Herbivore, Plant, TreeOfLife};
-	public static int numAnimalTypes = 3;
+	public int numAnimalTypes = 3;
+	// These are for linking to the prefabricated object, which is stored as a file in the game assets.
+	public GameObject animalPrefab;
+	public GameObject plantPrefab;
+	public GameObject enemyAIPrefab;
+	// The materials for the animals.
+	public Material mat_EnemyCarnivore, mat_EnemyOmnivore, mat_EnemyHerbivore;
+	public Material mat_PlayerCarnivore, mat_PlayerOmnivore, mat_PlayerHerbivore;
 
 
-	public static SpeciesType getRandomAnimalType()
+	public GameObject getPlant()
+	{
+		GameObject plant = Instantiate(plantPrefab) as GameObject;
+		return plant;
+	}
+
+
+	public SpeciesType getRandomAnimalType()
 	{
 		System.Array values = System.Enum.GetValues (typeof(SpeciesType));
-		SpeciesType animal = (SpeciesType)(((int[])values)[Random.Range(0,numAnimalTypes)]);
+		// need to cast the enums to an array of ints
+		SpeciesType species = (SpeciesType)( ((int[])values)[Random.Range(0,numAnimalTypes)] );
+		return species;
+	}
+
+
+	public GameObject getRandomAnimal(bool isEnemy)
+	{
+		SpeciesType species = getRandomAnimalType();
+		ArrayList prey = new ArrayList ();
+		prey = setAnimalPrey (species);
+		// Create a new instance of a species from the prefab file,
+		// and set its species type and list of prey.
+		GameObject animal;
+
+		if (isEnemy) {
+			animal = Instantiate(enemyAIPrefab) as GameObject;
+			animal.GetComponent<EnemyBehavior> ().setSpeciesType (species);
+			animal.GetComponent<EnemyBehavior> ().setPreyList (prey);
+		} else {
+			animal = Instantiate(animalPrefab) as GameObject;
+			animal.GetComponent<AnimalBehavior> ().setSpeciesType (species);
+			animal.GetComponent<AnimalBehavior> ().setPreyList (prey);
+		}
+
 		return animal;
 	}
 
@@ -32,34 +70,66 @@ public class SpeciesFactory : MonoBehaviour
 	* Trees and Shrubs
 	* 
 	* **/
-	public static ArrayList setSpeciesPreyHardCoded(SpeciesFactory.SpeciesType species)
+	public ArrayList setAnimalPrey(SpeciesFactory.SpeciesType species)
 	{
 		ArrayList prey = new ArrayList();
 
 		switch (species) 
 		{
-		case SpeciesFactory.SpeciesType.Omnivore:
+		case SpeciesFactory.SpeciesType.Carnivore:
+			prey.Add (SpeciesType.Omnivore);
+			prey.Add (SpeciesType.Carnivore); 
+			prey.Add (SpeciesType.Herbivore);
+			break;
+		case SpeciesFactory.SpeciesType.Omnivore: 
 			prey.Add (SpeciesType.Omnivore);
 			prey.Add (SpeciesType.Carnivore); 
 			prey.Add (SpeciesType.Herbivore);
 			prey.Add (SpeciesType.Plant);
-			break;
-		case SpeciesFactory.SpeciesType.Carnivore: 
-			prey.Add (SpeciesType.Omnivore);
-			prey.Add (SpeciesType.Carnivore); 
-			prey.Add (SpeciesType.Herbivore);
 			break;
 		case SpeciesFactory.SpeciesType.Herbivore:
 			prey.Add (SpeciesType.Plant);
-			break;
-		case SpeciesFactory.SpeciesType.Plant:
-			// do nothing return an empty list
 			break;
 		}
 
 		return prey;
 	}
 
+
+	public void setAnimalMaterial(GameObject animal, SpeciesFactory.SpeciesType species, bool isEnemy)
+	{
+		if (isEnemy) 
+		{
+			switch (species) 
+			{
+			case SpeciesFactory.SpeciesType.Carnivore:
+				animal.GetComponent<Renderer>().material = mat_EnemyCarnivore;
+				break;
+			case SpeciesFactory.SpeciesType.Omnivore: 
+				animal.GetComponent<Renderer>().material = mat_EnemyOmnivore;
+				break;
+			case SpeciesFactory.SpeciesType.Herbivore:
+				animal.GetComponent<Renderer>().material = mat_EnemyHerbivore;
+				break;
+			}
+		}
+		else 
+		{
+			switch (species) 
+			{
+			case SpeciesFactory.SpeciesType.Carnivore:
+				animal.GetComponent<Renderer>().material = mat_PlayerCarnivore;
+				break;
+			case SpeciesFactory.SpeciesType.Omnivore: 
+				animal.GetComponent<Renderer>().material = mat_PlayerOmnivore;
+				break;
+			case SpeciesFactory.SpeciesType.Herbivore:
+				animal.GetComponent<Renderer>().material = mat_PlayerHerbivore;
+				break;
+			}
+		}
+
+	}
 
 
 }

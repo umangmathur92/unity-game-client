@@ -5,7 +5,24 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animalPrefab: {fileID: 1294632440649462, guid: 3cc3f2da6fce5cd4fbe5e935d0a3242f,
+      type: 2}
+  - plantPrefab: {fileID: 1763975791547806, guid: 863a46edcd6cbe34fb5967a7ce0e1da2,
+      type: 2}
+  - enemyAIPrefab: {fileID: 1906821589000046, guid: 456dc561100fef04584d08d7561e1616,
+      type: 2}
+  - mat_EnemyCarnivore: {fileID: 2100000, guid: 69b2a11b493db214ab2601521901b338,
+      type: 2}
+  - mat_EnemyOmnivore: {fileID: 2100000, guid: 99b619dc21b2cc74da7aa027a24aac43, type: 2}
+  - mat_EnemyHerbivore: {fileID: 2100000, guid: 3a6cc467f4af36e4580c09f6b261ce07,
+      type: 2}
+  - mat_PlayerCarnivore: {fileID: 2100000, guid: e526cfb5106c1e2478797816071e1aa4,
+      type: 2}
+  - mat_PlayerOmnivore: {fileID: 2100000, guid: df117087477db014eaf087106e445d0c,
+      type: 2}
+  - mat_PlayerHerbivore: {fileID: 2100000, guid: 1a749b70d8d1e2a459f41b3ac4c4bfa7,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

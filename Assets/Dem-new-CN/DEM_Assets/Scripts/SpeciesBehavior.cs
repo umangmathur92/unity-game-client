@@ -6,15 +6,13 @@ using System.Collections;
 
 public class SpeciesBehavior : MonoBehaviour 
 {
-	// The types are Omnivore, Carnivore, Herbivore, Plant, TreeOfLife.
+	// The types are Omnivore, Carnivore, Herbivore, and Plant.
 	protected SpeciesFactory.SpeciesType speciesType;
 	protected ArrayList preyList;
 
-	// health status, max health = 5, min health = 0
 	protected bool alive;
-	private int health;
-
-	protected const int maxHealth = 5;
+	protected int health;
+	protected const int maxHealth = 6;
 	protected const int injured = 3;
 	protected const int dead = 0;
 
@@ -22,7 +20,7 @@ public class SpeciesBehavior : MonoBehaviour
 	// the initial state
 	void Start() {
 		this.alive = true;
-		this.health = 5;
+		this.health = maxHealth;
 		preyList = new ArrayList();
 	}
 		
@@ -36,14 +34,15 @@ public class SpeciesBehavior : MonoBehaviour
 	}
 
 	public void setPreyList(ArrayList prey){
-		preyList.AddRange (prey);
+		this.preyList = prey;
 	}
 
 	// for testing of code, uses a hard coded list,
 	// sets preyList to empty list for plants
 	public void setPreyList(SpeciesFactory.SpeciesType species)
 	{
-		preyList = SpeciesFactory.setSpeciesPreyHardCoded (species);
+		SpeciesFactory factory = GameObject.Find("MasterController").GetComponent<SpeciesFactory>();
+		preyList = factory.setAnimalPrey (species);
 	}
 
 	public ArrayList getPreyList() {

@@ -11,8 +11,8 @@ public class EnemyBehavior : SpeciesBehavior {
 	// Use this for initialization
 	new void Start() 
 	{
-		this.setAlive(true);
-		this.setHealth (5);
+		this.alive = true;
+		this.health = maxHealth;
 		preyList = new ArrayList();
 		preyList.Add (SpeciesFactory.SpeciesType.TreeOfLife);
 	}

@@ -8,7 +8,7 @@ using System.Collections;
 public class EnemyController : MonoBehaviour 
 {
 	// for linking to the prefabricated object, which is stored as a file in the game assets
-	[SerializeField] private GameObject enemyPrefab;
+	public GameObject enemyPrefab;
 	private GameObject enemy;
 	// the current number of enemies alive in the game
 	public static int numberOfEnemies;
@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
 	// Minus 4 to accomidate the walls around the board.
 	public Transform dimentionsGround;
 	private int groundWidth;
+	// for making the enemy species
+	private SpeciesFactory factory;
 
 
 	// Use this for initialization
@@ -28,6 +30,7 @@ public class EnemyController : MonoBehaviour
 		oldTime = Time.time;
 		groundWidth = (int)(dimentionsGround.localScale.x / 2) - 4;
 		numberOfEnemies = 0;
+		factory = GameObject.Find("MasterController").GetComponent<SpeciesFactory>();
 	}
 
 
@@ -46,19 +49,10 @@ public class EnemyController : MonoBehaviour
 	}
 
 
+	// Create a new instance of an enemy based on a random animal species.
 	private GameObject makeNewEnemy() 
-	{
-		Material material;
-		// Create a new instance of an enemy based on the enemy prefab file,
-		// and cast its type to game object.
-		GameObject enemy = Instantiate(enemyPrefab) as GameObject;
-		// Randomly assign the enemy an animal species type.
-		SpeciesBehavior behavior = enemy.GetComponent<SpeciesBehavior>();
-		if (behavior != null) {
-			SpeciesFactory.SpeciesType type = SpeciesFactory.getRandomAnimalType ();
-			behavior.setSpeciesType (type);
-			behavior.setPreyList (type);
-		}
+	{		
+		GameObject enemy = factory.getRandomAnimal (true);
 		return enemy;
 	}
 
