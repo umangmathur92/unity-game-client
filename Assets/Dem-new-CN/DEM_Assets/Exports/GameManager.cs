@@ -20,12 +20,14 @@ public class GameManager : MonoBehaviour {
 
 		if (TreeOfLifeBehavior.treeHealth <= 0)
 		{
-			EndGame();
+			// Start a coroutine Die to let the tree of life have time to react to dying
+			StartCoroutine (EndGame());
 		}
 	}
 
-	void EndGame ()
+	public virtual IEnumerator EndGame()
 	{
+		yield return new WaitForSeconds(2.0f);
 		GameIsOver = true;
 		gameOverUI.SetActive(true);
 	}

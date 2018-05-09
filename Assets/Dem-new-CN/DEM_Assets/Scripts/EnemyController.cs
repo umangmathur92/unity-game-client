@@ -10,25 +10,37 @@ public class EnemyController : MonoBehaviour
 	// for linking to the prefabricated object, which is stored as a file in the game assets
 	[SerializeField] private GameObject enemyPrefab;
 	private GameObject enemy;
+	// the current number of enemies alive in the game
+	public static int numberOfEnemies;
+	// The maximum number of enemies on the game board at the same time.
+	public static int maxNumberOfEnemies = 10;
+	// for the timing of automatic enemy spawinings
 	private float timeStep = 2.0f;
 	private float oldTime;
-	// the current number of enemies alive in the game
-	public static int numberOfEnemies = 0;
+	// The edges of the game board, this is used for species placement on the board.
+	// Minus 4 to accomidate the walls around the board.
+	public Transform dimentionsGround;
+	private int groundWidth;
+
 
 	// Use this for initialization
 	void Start(){	
 		oldTime = Time.time;
+		groundWidth = (int)(dimentionsGround.localScale.x / 2) - 4;
+		numberOfEnemies = 0;
 	}
+
 
 	// For every frame of the game scene
 	// Every so many seconds, spawn a new enemy.
 	void Update() 
 	{
-		if ((numberOfEnemies < DemSceneConstants.maxNumberOfEnemies) && ((Time.time - oldTime) > timeStep))
+		if ((numberOfEnemies < maxNumberOfEnemies) && ((Time.time - oldTime) > timeStep))
 		{
 			// create a new instance of an enemy 
 			enemy = makeNewEnemy ();
 			placeEnemy (enemy);
+			numberOfEnemies++;
 			oldTime = Time.time;
 		}
 	}
@@ -43,7 +55,7 @@ public class EnemyController : MonoBehaviour
 		// Randomly assign the enemy an animal species type.
 		SpeciesBehavior behavior = enemy.GetComponent<SpeciesBehavior>();
 		if (behavior != null) {
-			DemSceneConstants.SpeciesType type = DemSceneConstants.getRandomAnimalType ();
+			SpeciesFactory.SpeciesType type = SpeciesFactory.getRandomAnimalType ();
 			behavior.setSpeciesType (type);
 			behavior.setPreyList (type);
 		}
@@ -56,9 +68,8 @@ public class EnemyController : MonoBehaviour
 	// which is at the center of the game board.
 	private void placeEnemy(GameObject enemy){
 
-		int width = DemSceneConstants.groundWidth / 2;
-		int x = width;
-		int z = Random.Range(-width, width);
+		int x = groundWidth;
+		int z = Random.Range(-groundWidth, groundWidth);
 		float angle = 90;		
 
 		if (Random.Range(0, 2) == 0) {
@@ -69,5 +80,5 @@ public class EnemyController : MonoBehaviour
 		enemy.transform.Rotate(0, angle, 0);
 	}
 
-
+		
 }

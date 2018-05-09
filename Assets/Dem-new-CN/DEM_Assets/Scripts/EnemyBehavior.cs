@@ -13,9 +13,8 @@ public class EnemyBehavior : SpeciesBehavior {
 	{
 		this.setAlive(true);
 		this.setHealth (5);
-		EnemyController.numberOfEnemies++;
 		preyList = new ArrayList();
-		preyList.Add (DemSceneConstants.SpeciesType.TreeOfLife);
+		preyList.Add (SpeciesFactory.SpeciesType.TreeOfLife);
 	}
 
 

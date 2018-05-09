@@ -7,7 +7,7 @@ using System.Collections;
 public class SpeciesBehavior : MonoBehaviour 
 {
 	// The types are Omnivore, Carnivore, Herbivore, Plant, TreeOfLife.
-	protected DemSceneConstants.SpeciesType speciesType;
+	protected SpeciesFactory.SpeciesType speciesType;
 	protected ArrayList preyList;
 
 	// health status, max health = 5, min health = 0
@@ -26,12 +26,12 @@ public class SpeciesBehavior : MonoBehaviour
 		preyList = new ArrayList();
 	}
 		
-	public void setSpeciesType(DemSceneConstants.SpeciesType species){
+	public void setSpeciesType(SpeciesFactory.SpeciesType species){
 		speciesType = species;
 		// TODO add correct material based on species type ??
 	}
 
-	public DemSceneConstants.SpeciesType getSpeciesType() {
+	public SpeciesFactory.SpeciesType getSpeciesType() {
 		return speciesType;
 	}
 
@@ -41,9 +41,9 @@ public class SpeciesBehavior : MonoBehaviour
 
 	// for testing of code, uses a hard coded list,
 	// sets preyList to empty list for plants
-	public void setPreyList(DemSceneConstants.SpeciesType species)
+	public void setPreyList(SpeciesFactory.SpeciesType species)
 	{
-		preyList = DemSceneConstants.setSpeciesPreyHardCoded (species);
+		preyList = SpeciesFactory.setSpeciesPreyHardCoded (species);
 	}
 
 	public ArrayList getPreyList() {

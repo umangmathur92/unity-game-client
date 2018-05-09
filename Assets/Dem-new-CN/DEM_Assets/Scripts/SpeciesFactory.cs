@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DemSceneConstants : MonoBehaviour
+public class SpeciesFactory : MonoBehaviour
 {
 	// Omnivore = 0, Carnivore = 1, Herbivore = 2, these are the constants used in the database.
 	// Added Plant = 3 and TreeOfLife = 4, for easier programming of collision and attack behaviors.
 	public enum SpeciesType {Omnivore, Carnivore, Herbivore, Plant, TreeOfLife};
-	// The edges of the game board, this is used for species placement on the board.
-	// Minus 4 to accomidate the walls around the board.
-	public static int groundWidth = 200 - 4;
-	// The maximum number of enemies on the game board at the same time.
-	public static int maxNumberOfEnemies = 10; // make 50?
-
 
 
 	public static SpeciesType getRandomAnimalType()
@@ -40,27 +34,27 @@ public class DemSceneConstants : MonoBehaviour
 	* Trees and Shrubs
 	* 
 	* **/
-	public static ArrayList setSpeciesPreyHardCoded(DemSceneConstants.SpeciesType species)
+	public static ArrayList setSpeciesPreyHardCoded(SpeciesFactory.SpeciesType species)
 	{
 		ArrayList prey = new ArrayList();
 
 		switch (species) 
 		{
-		case DemSceneConstants.SpeciesType.Omnivore:
+		case SpeciesFactory.SpeciesType.Omnivore:
 			prey.Add (SpeciesType.Omnivore);
 			prey.Add (SpeciesType.Carnivore); 
 			prey.Add (SpeciesType.Herbivore);
 			prey.Add (SpeciesType.Plant);
 			break;
-		case DemSceneConstants.SpeciesType.Carnivore: 
+		case SpeciesFactory.SpeciesType.Carnivore: 
 			prey.Add (SpeciesType.Omnivore);
 			prey.Add (SpeciesType.Carnivore); 
 			prey.Add (SpeciesType.Herbivore);
 			break;
-		case DemSceneConstants.SpeciesType.Herbivore:
+		case SpeciesFactory.SpeciesType.Herbivore:
 			prey.Add (SpeciesType.Plant);
 			break;
-		case DemSceneConstants.SpeciesType.Plant:
+		case SpeciesFactory.SpeciesType.Plant:
 			// do nothing return an empty list
 			break;
 		}

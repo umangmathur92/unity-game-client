@@ -10,6 +10,7 @@ public class EnemyAINavigation : MonoBehaviour {
 	// set this to the tree of life prefab in Unity Inspector
 	public Transform locationTreeOfLife;
 	private NavMeshAgent agent;
+	float distance;
 
 	// Use this for initialization
 	void Start () {
@@ -19,9 +20,12 @@ public class EnemyAINavigation : MonoBehaviour {
 		
 	// to be done in every frame
 	void Update() {
+		
+		// distance from enemy to the tree of life
+		distance = Vector3.Distance(agent.transform.position, locationTreeOfLife.position);
 
 		// check if enemy has reached the tree of life
-		if (agent.remainingDistance <= agent.stoppingDistance) {
+		if (distance <= 1.0) {
 			
 			TreeOfLifeBehavior tree = GameObject.Find("TreeOfLife").GetComponent<TreeOfLifeBehavior> ();
 			if (tree != null) {
@@ -36,4 +40,6 @@ public class EnemyAINavigation : MonoBehaviour {
 		}
 
 	}
+
+
 }
