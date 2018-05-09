@@ -53,6 +53,7 @@ public class SpeciesFactory : MonoBehaviour
 			animal.GetComponent<AnimalBehavior> ().setPreyList (prey);
 		}
 
+		setAnimalMaterial (animal, species, isEnemy);
 		return animal;
 	}
 
