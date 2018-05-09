@@ -40,20 +40,14 @@ public class EnemyController : MonoBehaviour
 	{
 		if ((numberOfEnemies < maxNumberOfEnemies) && ((Time.time - oldTime) > timeStep))
 		{
-			// create a new instance of an enemy 
-			enemy = makeNewEnemy ();
+			// Create a new instance of an enemy based on a random animal species.
+			Debug.Log("About to creat new enemy in EnemyController Update");
+			enemy = factory.getRandomAnimal (true);
 			placeEnemy (enemy);
+			Debug.Log("Enemy should be on the game board");
 			numberOfEnemies++;
 			oldTime = Time.time;
 		}
-	}
-
-
-	// Create a new instance of an enemy based on a random animal species.
-	private GameObject makeNewEnemy() 
-	{		
-		GameObject enemy = factory.getRandomAnimal (true);
-		return enemy;
 	}
 
 
