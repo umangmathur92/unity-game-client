@@ -34,15 +34,13 @@ public class SpeciesFactory : MonoBehaviour
 	}
 
 
+	// Create a new instance of a species from the prefab file,
+	// and set its species type and list of prey.
 	public GameObject getRandomAnimal(bool isEnemy)
 	{
 		SpeciesType species = getRandomAnimalType();
 		ArrayList prey = new ArrayList ();
 		prey = setAnimalPrey (species);
-
-		Debug.Log ("in get Random Animal");
-		// Create a new instance of a species from the prefab file,
-		// and set its species type and list of prey.
 		GameObject animal = null;
 
 		if (isEnemy) {
