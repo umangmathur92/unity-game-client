@@ -7,8 +7,11 @@ using UnityEngine.AI;
 
 public class EnemyAINavigation : MonoBehaviour {
 
-	// set this to the tree of life prefab in Unity Inspector
+	// Set the transform to the tree of life prefab in Unity Inspector
 	public Transform locationTreeOfLife;
+	public TreeOfLifeBehavior treeBehavior;
+
+	private EnemyBehavior behavior;
 	private NavMeshAgent agent;
 	float distance;
 
@@ -16,45 +19,37 @@ public class EnemyAINavigation : MonoBehaviour {
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
 		agent.destination = locationTreeOfLife.position;
+		behavior = this.gameObject.GetComponent<EnemyBehavior>();
 	}
 		
+
+
+
+
 	// to be done in every frame
 	void Update() {
-		/***
+		
 		// distance from enemy to the tree of life
 		distance = Vector3.Distance(agent.transform.position, locationTreeOfLife.position);
 
 		// check if enemy has reached the tree of life
-		if (distance <= 1.0) {
-			
-			TreeOfLifeBehavior tree = GameObject.Find("TreeOfLife").GetComponent<TreeOfLifeBehavior> ();
-			if (tree != null) {
-				tree.ReactToHit ();
+		if (distance <= 3.0) 
+		{
+			agent.isStopped = true;
+
+			if (treeBehavior != null) {
+				treeBehavior.ReactToHit ();
 			}
 
-			SpeciesBehavior behavior = GetComponent<SpeciesBehavior> ();
 			if (behavior != null) {
 				EnemyController.numberOfEnemies--;
 				behavior.ReactToHit ();
 			}
 		}
-		***/
+
 	}
 
 
-	void onTriggerEnter(Collider other)
-	{
-		TreeOfLifeBehavior tree = other.gameObject.GetComponent<TreeOfLifeBehavior>();
-		//TreeOfLifeBehavior tree = GameObject.Find("TreeOfLife").GetComponent<TreeOfLifeBehavior> ();
-		EnemyBehavior enemy = GetComponent<EnemyBehavior> ();
 
-		//if (tree != null && behavior != null) 
-		if(tree != null)
-		{
-			//EnemyController.numberOfEnemies--;
-			tree.ReactToHit();
-			//enemy.ReactToHit();
-		}
-	}
 
 }

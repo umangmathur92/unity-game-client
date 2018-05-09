@@ -62,7 +62,7 @@ public class TreeOfLifeBehavior : MonoBehaviour
 			material = injuredTreeOfLife;
 		}
 	}
-
+		
 
 	public virtual IEnumerator Die() {
 		// The object reacts to being hit by falling over,
