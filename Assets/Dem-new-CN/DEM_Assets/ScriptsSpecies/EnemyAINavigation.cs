@@ -29,7 +29,6 @@ public class EnemyAINavigation : MonoBehaviour {
 
 	// to be done in every frame
 	void Update() {
-		
 		// distance from enemy to the tree of life
 		distance = Vector3.Distance(agent.transform.position, locationTreeOfLife.position);
 
