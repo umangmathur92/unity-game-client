@@ -182,7 +182,7 @@ public class Graph : MonoBehaviour {
 		if (buttonActive) {
 			if (GUI.Button(new Rect(105, Screen.height - 275f, 80, 30), "Graph")) {
 				ToggleGraph();
-				//180f
+
 			}
 		}
 

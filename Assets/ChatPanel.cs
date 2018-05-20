@@ -25,11 +25,10 @@ public class ChatPanel : MonoBehaviour {
         RectTransform parentTransform = this.transform.parent.gameObject.GetComponent<RectTransform>();
         RectTransform transform = this.GetComponent<RectTransform>();
         
+		// moved and transformed chat box
 		transform.sizeDelta = new Vector2(transform.sizeDelta.x + 630, parentTransform.sizeDelta.y - 420);
 		transform.localPosition += new Vector3(1 * 1.50f, -1 * 420.0f , 0);
-		//transform.localPosition += Vector3.left * 300.0f;
-		//localPosition = Vector3.down * 20.0f;
-		//-1 * 300.0f, -1 * 20.0f, 0
+
 		txtMessage.ActivateInputField();
         btnSend.onClick.AddListener(sendChatMessage);
     }
