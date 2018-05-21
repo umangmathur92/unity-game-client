@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class Chat : MonoBehaviour {
 
 	// Window Properties
-	private float width = 200;
+	private float width = 600;
 	private float height = 100;
 	// Other
 	private Rect windowRect;
@@ -76,7 +76,7 @@ public class Chat : MonoBehaviour {
 		style.alignment = TextAnchor.UpperCenter;
 		style.font = font;
 		style.fontSize = 16;
-		
+
 		GUI.Label(new Rect((windowRect.width - 100) / 2, 0, 100, 30), "Chat", style);
 
 		Rect innerRect = new Rect(25, 40, width - 50, height * 0.5f);
@@ -104,6 +104,7 @@ public class Chat : MonoBehaviour {
 
 		style = new GUIStyle(GUI.skin.button);
 		style.alignment = TextAnchor.UpperCenter;
+
 
 		buttonRect = new Rect(320, innerRect.y + innerRect.height + 20, 60, 20);
 		if (GUI.Button(buttonRect, "Send", style)) {

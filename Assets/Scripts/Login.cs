@@ -23,6 +23,7 @@ public class Login : MonoBehaviour
     private bool isInitial = true;
     private String[] topPlayers;
     private int playerRank = -1;
+	public AudioSource loginloop;
 
     void Awake ()
     {
@@ -37,9 +38,18 @@ public class Login : MonoBehaviour
         font = Resources.Load<Font> ("Fonts/" + "Chalkboard");
 
 		// RR.RRMessageQueue.getInstance ().AddCallback (RR.Constants.SMSG_AUTH, RR_ResponseLogin);
+
+
+		// Lobby Login Audio w/ loop
+		loginloop = (AudioSource)gameObject.AddComponent<AudioSource>();
+		AudioClip myAudioClip;
+		myAudioClip = (AudioClip)Resources.Load ("LobbyLoginloop");
+		loginloop.clip = myAudioClip;
+		loginloop.loop = true;
+		loginloop.Play ();
 	}
-	
-    // Use this for initialization
+
+	// Use this for initialization
     void Start ()
     {
         //StartCoroutine("AutoLogin");
@@ -114,6 +124,7 @@ public class Login : MonoBehaviour
             GUI.SetNextControlName ("username_field");
             user_id = GUI.TextField (new Rect (0, 25, windowRect.width - 20, 25), user_id, 25);
         }
+
         GUI.EndGroup ();
 		
         GUI.BeginGroup (new Rect (10, 80, 300, 100));
@@ -129,13 +140,18 @@ public class Login : MonoBehaviour
             isInitial = false;
         }
 		
-        if (GUI.Button (new Rect (width / 2 - 110, 145, 100, 30), "Log In")) {
-            Submit ();
+        if (GUI.Button (new Rect (width / 2 - 130, 145, 60, 30), "Log In")) {
+			Submit ();
         }
 		
-        if (GUI.Button (new Rect (width / 2 + 10, 145, 100, 30), "Register")) {
-            SwitchToRegister ();
-        }
+        if (GUI.Button (new Rect (width / 2 - 60, 145, 60, 30), "Register")) {
+			SwitchToRegister ();
+		}
+			
+		// needs to be implemented, Forgot Password button redirects to Register page for now
+			if ( GUI.Button (new Rect (width / 2 + 10, 145, 120, 30), "Forgot Password?")) {
+			SwitchToRegister ();
+		}
     }
 
     public void Submit ()

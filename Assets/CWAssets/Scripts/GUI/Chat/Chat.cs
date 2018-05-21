@@ -36,6 +36,7 @@ public class Chat : MonoBehaviour {
     if (!isHidden) {
       windowRect = new Rect(10, Screen.height - height - 10, width, height);
     }
+		
 
     scrollViewVector = Vector2.zero;
   }
@@ -71,9 +72,9 @@ public class Chat : MonoBehaviour {
     style.fontSize = 16;
     
     GUI.Label(new Rect((windowRect.width - 100) / 2, 0, 100, 30), "Chat", style);
-
+			//100
     Rect innerRect = new Rect(25, 40, width - 50, height * 0.5f);
-
+			//40
     style = new GUIStyle(GUI.skin.label);
     style.alignment = TextAnchor.UpperLeft;
 

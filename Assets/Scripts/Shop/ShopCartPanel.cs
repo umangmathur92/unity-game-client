@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SpeciesType = ClashSpecies.SpeciesType;
 
 public class ShopCartPanel : MonoBehaviour {
     
@@ -164,6 +165,21 @@ public class ShopCartPanel : MonoBehaviour {
 						Debug.Log("" + entry.Key + " " + entry.Value);
 					}
                 }
+
+
+				// Added new buttons to sort specie types
+				if(GUI.Button(new Rect(10, 30, 80, 30), "Carnivores", style) && !showPurchaseComplete){
+					
+				}
+
+				if (GUI.Button (new Rect (100, 30, 80, 30), "Herbivores", style) && !showPurchaseComplete) {
+				}
+
+				if (GUI.Button (new Rect (190, 30, 80, 30), "Omnivores", style) && !showPurchaseComplete) {
+				}
+
+				if (GUI.Button (new Rect (280, 30, 70, 30), "Plants", style) && !showPurchaseComplete) {
+				}
             }
 
 			creditsRemaining = Mathf.Max (0, GameState.player.credits - cartSum);

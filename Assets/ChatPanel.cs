@@ -24,8 +24,12 @@ public class ChatPanel : MonoBehaviour {
         // get the height from the parent, and then make the chatpanel the same height.
         RectTransform parentTransform = this.transform.parent.gameObject.GetComponent<RectTransform>();
         RectTransform transform = this.GetComponent<RectTransform>();
-        transform.sizeDelta = new Vector2(transform.sizeDelta.x, parentTransform.sizeDelta.y);
-        txtMessage.ActivateInputField();
+        
+		// moved and transformed chat box
+		transform.sizeDelta = new Vector2(transform.sizeDelta.x + 630, parentTransform.sizeDelta.y - 420);
+		transform.localPosition += new Vector3(1 * 1.50f, -1 * 420.0f , 0);
+
+		txtMessage.ActivateInputField();
         btnSend.onClick.AddListener(sendChatMessage);
     }
 
