@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: 6c48bedb7c08f374da5c109904ad44cf
+<<<<<<< HEAD:Assets/Dem-new-2018/README DEM-new-2018.txt.meta
 timeCreated: 1527297315
+=======
+timeCreated: 1527297117
+>>>>>>> 16c937ed3124f52cddfc3f800dc75bab2d784779:Assets/Dem-new-2018/README DEM-new-2018.txt.meta
 licenseType: Free
 TextScriptImporter:
   externalObjects: {}
